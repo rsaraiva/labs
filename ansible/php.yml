@@ -1,0 +1,7 @@
+---
+- name: Configura servidor PHP
+  hosts: ansible1
+  tasks:
+    - name: Instala o PHP
+      apt: name=php5 state=present
+
