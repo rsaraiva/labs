@@ -1,6 +1,1 @@
-include mysql::server
-
-mysql::db { "loja":
-	schema => "loja_schema",
-	password => "loja_secret",
-}
+include loja_virtual::db
