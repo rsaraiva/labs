@@ -5,7 +5,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 	config.vm.box = "hashicorp/precise32"
 
 	config.vm.provider "virtualbox" do |v|
-		v.memory = 512
+		v.memory = 384
 		v.cpus = 1
 	end
 
@@ -13,10 +13,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
 	config.vm.define :db do |db_config|
 		db_config.vm.network :private_network, :ip => "192.168.33.10"
-	end
-
-	config.vm.define :db2 do |db_config|
-		db_config.vm.network :private_network, :ip => "192.168.33.11"
 
 		db_config.vm.provision "puppet" do |puppet|
 			puppet.manifest_file = "db.pp"
@@ -27,10 +23,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
 	config.vm.define :web do |web_config|
 		web_config.vm.network :private_network, :ip => "192.168.33.20"
-	end
-
-	config.vm.define :web2 do |web_config|
-		web_config.vm.network :private_network, :ip => "192.168.33.21"
 
 		web_config.vm.provision "puppet" do |puppet|
 			puppet.manifest_file = "web.pp"

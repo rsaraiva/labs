@@ -42,7 +42,7 @@ service { "tomcat7":
 	require => Package["tomcat7"],
 }
 
-$db_host = "192.168.33.11"
+$db_host = "192.168.33.10"
 $db_schema = "loja_schema"
 $db_user = "loja"
 $db_password = "lojasecret"
