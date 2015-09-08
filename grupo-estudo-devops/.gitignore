@@ -1,3 +1,7 @@
 .vagrant/
 manifests/devopsnapratica.war
 *.war
+librarian/.librarian
+librarian/.tmp
+librarian/Puppetfile.lock
+librarian/modules
