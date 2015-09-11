@@ -7,7 +7,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 	config.librarian_puppet.puppetfile_dir = "librarian"
 
 	config.vm.provider "virtualbox" do |v|
-		v.memory = 384
+		v.memory = 1024
 		v.cpus = 1
 	end
 
