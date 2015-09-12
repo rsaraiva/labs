@@ -64,4 +64,12 @@ class loja_virtual::ci {
 		require => File[$job_structure],
 		notify => Service['jenkins'],
 	}
+
+	$repo_dir = '/var/lib/apt/repo'
+	$repo_name = 'devopspkgs'
+
+	class { 'loja_virtual::repo':
+		basedir => $repo_dir,
+		name => $repo_name,
+	}
 }
