@@ -1,6 +1,7 @@
 class loja_virtual::db {
 
 	include mysql::server
+	include loja_virtual
 	include loja_virtual::params
 
 	mysql::db { $loja_virtual::params::db['user']:

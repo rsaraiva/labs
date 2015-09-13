@@ -1,12 +1,9 @@
 class loja_virtual::ci {
 
-	exec { "apt-update":
-		command => "/usr/bin/apt-get update"
-	}
+	include loja_virtual
 
 	package { ['git', 'maven2', 'openjdk-6-jdk', 'rubygems']:
 		ensure => "installed",
-		require => Exec["apt-update"],
 	}
 
 	class { 'jenkins':
