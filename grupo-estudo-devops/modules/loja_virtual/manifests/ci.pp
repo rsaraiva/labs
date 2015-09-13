@@ -4,7 +4,7 @@ class loja_virtual::ci {
 		command => "/usr/bin/apt-get update"
 	}
 
-	package { ['git', 'maven2', 'openjdk-6-jdk']:
+	package { ['git', 'maven2', 'openjdk-6-jdk', 'rubygems']:
 		ensure => "installed",
 		require => Exec["apt-update"],
 	}
@@ -48,6 +48,8 @@ class loja_virtual::ci {
 	$git_poll_interval = '* * * * *'
 	$maven_goal = 'install'
 	$archive_artifacts = 'combined/target/*.war'
+	$repo_dir = '/var/lib/apt/repo'
+	$repo_name = 'devopspkgs'
 
 	file { $job_structure:
 		ensure => 'directory',
@@ -65,11 +67,14 @@ class loja_virtual::ci {
 		notify => Service['jenkins'],
 	}
 
-	$repo_dir = '/var/lib/apt/repo'
-	$repo_name = 'devopspkgs'
-
 	class { 'loja_virtual::repo':
 		basedir => $repo_dir,
 		name => $repo_name,
+	}
+
+	package { 'fpm':
+		ensure => 'installed',
+		provider => 'gem',
+		require => Package['rubygems'],
 	}
 }
