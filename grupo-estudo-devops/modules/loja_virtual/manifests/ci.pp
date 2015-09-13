@@ -6,6 +6,12 @@ class loja_virtual::ci {
         ensure => "installed",
     }
 
+    package { ['fpm', 'bundler']:
+        ensure   => 'installed',
+        provider => 'gem',
+        require  => Package['rubygems'],
+    }
+
     class { 'jenkins':
         config_hash => {
             'JAVA_ARGS' => { 'value' => '-Xmx256m' }
@@ -67,11 +73,5 @@ class loja_virtual::ci {
     class { 'loja_virtual::repo':
         basedir => $repo_dir,
         name => $repo_name,
-    }
-
-    package { 'fpm':
-        ensure => 'installed',
-        provider => 'gem',
-        require => Package['rubygems'],
     }
 }
