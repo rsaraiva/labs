@@ -6,3 +6,4 @@ librarian/.tmp
 librarian/Puppetfile.lock
 librarian/modules
 *.tgz
+notes
