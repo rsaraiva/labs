@@ -5,3 +5,4 @@ librarian/.librarian
 librarian/.tmp
 librarian/Puppetfile.lock
 librarian/modules
+*.tgz
