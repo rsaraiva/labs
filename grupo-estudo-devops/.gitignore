@@ -7,3 +7,4 @@ librarian/Puppetfile.lock
 librarian/modules
 *.tgz
 notes
+apt-cache

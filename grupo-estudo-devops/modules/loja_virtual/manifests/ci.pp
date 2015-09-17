@@ -2,7 +2,7 @@ class loja_virtual::ci {
 
     include loja_virtual
 
-    package { ['git', 'maven2', 'openjdk-6-jdk', 'rubygems']:
+    package { ['git', 'maven2', 'openjdk-6-jdk', 'rubygems']: #haveged
         ensure => "installed",
     }
 
@@ -18,20 +18,23 @@ class loja_virtual::ci {
         },
     }
 
-    $plugins = [
-        'ssh-credentials',
-        'credentials',
-        'scm-api',
-        'git-client',
-        'git',
-        'maven-plugin',
-        'javadoc',
-        'mailer',
-        'greenballs',
-        'ws-cleanup'
-    ]
+    # $plugins = [
+    #     'rvm',
+    #     'ssh-credentials',
+    #     'credentials',
+    #     'scm-api',
+    #     'git-client',
+    #     'git',
+    #     'maven-plugin',
+    #     'javadoc',
+    #     'mailer',
+    #     'greenballs',
+    #     'ws-cleanup',
+    #     'parameterized-trigger',
+    #     'copyartifact'
+    # ]
 
-    jenkins::plugin { $plugins: }
+    # jenkins::plugin { $plugins: }
 
     file { '/var/lib/jenkins/hudson.tasks.Maven.xml':
         mode => 0644,
